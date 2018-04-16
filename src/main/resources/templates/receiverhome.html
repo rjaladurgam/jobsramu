@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Receiver Home</title>
+    </head>
+    <body>
+        <h1> Receiver Home Page </h1>
+        <table>
+        	<tr>
+        		<th> Service </th>
+        		<th> Provider </th>
+        		<th> Start Time </th>
+        		<th> End Time </th>
+        	</tr>	 
+            	<tr th:each="offering : ${offerings}">
+            		<form name='bookingform' action="#" th:action="@{/savebooking}" method="post">
+ 		        		<td th:text="${offering.serviceID}"> Service </td>
+		        		<td th:text="${offering.user.userID}"> Provider </td>
+		        		<td th:text="${offering.startTime}"> Start Time </td>
+		        		<td th:text="${offering.endTime}"> End Time </td>
+		        		<input name="offeringid" type="hidden" th:value="${offering.id}" />
+		        		<td><input name="submit" type="submit" value="Book" /></td>
+		        	</form>
+	        	</tr>
+        </table>
+    </body>
+</html>

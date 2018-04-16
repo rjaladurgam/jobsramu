@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Provider Home</title>
+    </head>
+    <body>
+        <form name='offerform' action="#" th:action="@{/saveserviceoffer}" th:object="${offering}" method="post">
+        	<table>
+        		<tr>
+        			<td>Service Type:</td>
+        			<td>
+        				<select name="serviceID" id="serviceID">
+                         <option th:each="serviceType : ${serviceTypes}"
+                            th:value="${serviceType.id}"
+                            th:utext="${serviceType.serviceName}"/>
+                  		</select>
+        			</td>
+        			</tr>
+        		<tr>
+        			<td>Start Time:</td>
+        			<td>
+        				<input type="datetime-local" name="starttime" id="startTime"> </input>
+        			</td>
+        		</tr>
+        		<tr>
+        			<td>End Time:</td>
+        			<td>
+        				<input type="datetime-local" name="endtime" id="endTime"> </input>
+        			</td>
+        		</tr>
+        		<tr>
+               		 <td><input name="submit" type="submit" value="submit" /></td>
+          	    </tr>
+        	</table>
+        
+        </form>
+        
+    </body>
+</html>
